@@ -1,3 +1,4 @@
+
 import { Component } from '@angular/core';
 import { ApiDataService } from './services/api-data.service';
 
@@ -8,19 +9,27 @@ import { ApiDataService } from './services/api-data.service';
 })
 export class AppComponent {
   title = 'service-api-call';
-  details :any;
+  details:any;
   det :any;
-  constructor(private data:ApiDataService){
-    //get data from the api
-    data.memberData().subscribe((dataXY) => {
-      this.details = dataXY
-      //console.log(this.details);
-    });
+  users:any;
+  constructor(private apidata:ApiDataService){
+    
+                                  //get data from the api
+    this.apidata.memberData()
+    .subscribe((dataVar) => 
+    {
+     this.details = dataVar;
+      console.log(this.details); 
+    }); 
+// local data inside service.ts file 
+    //console.log(data.userData());
+    this.users= apidata.userData();
+    
   }
   //post data with saveUsers() fxn to api
   getFormData(data1 :any){
     //console.log(data1);
-    this.data.saveUsers(data1).subscribe((result) => {
+    this.apidata.saveUsers(data1).subscribe((result) => {
       this.det = result
       console.log(this.det);
     });
