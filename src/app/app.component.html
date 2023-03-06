@@ -1,8 +1,9 @@
 <h1>{{title}}</h1>
+<h6>data stored in server using api service al server:3000</h6>
 <ul>
-<li *ngFor ="let item of details">{{item.id}} -- {{item.title}}
-</li>
-</ul>
+  <li *ngFor ="let item of details">{{item.id}} -- {{item.title}}
+  </li>
+  </ul>
 
 <form #userForm="ngForm" (ngSubmit) ="getFormData(userForm.value)">
     <input type="text" name="fname" ngModel> <br><br>
@@ -10,3 +11,11 @@
     <input type="text" name="distt" ngModel> <br><br>
   <button>add new user</button>
   </form>
+
+
+  <h1>local data inside service :-</h1>
+
+  <ul>
+    <li *ngFor ="let i of users">{{i.name}} -- {{i.email}}
+    </li>
+    </ul>
